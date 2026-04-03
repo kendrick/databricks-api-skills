@@ -405,7 +405,11 @@ databricks/
 └── ...
 ```
 
-After generating a domain skill, update the top-level SKILL.md to include the new domain in its routing table. See the top-level SKILL.md template below.
+After generating a domain skill, update the top-level SKILL.md (`~/.local/share/skills/databricks/SKILL.md`) in three places:
+
+1. **Quick Routing table** — add a row: `| [task description] | **[Domain]** | \`{domain}/SKILL.md\` |`
+2. **Domain Status table** — change the domain's row from `🔲 Not started` to `✅ Built` with file counts and notes
+3. **Directory Structure** — add the new domain's tree with its sub-files listed
 
 ---
 
@@ -419,3 +423,4 @@ After generating a domain skill, update the top-level SKILL.md to include the ne
 6. Phase 2: I generate REST + Python SDK skill files
 7. Phase 3: I write the domain SKILL.md
 8. Phase 4: Self-review
+9. **Phase 5: Update the top-level SKILL.md** (Quick Routing, Domain Status, Directory Structure)
