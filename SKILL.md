@@ -36,7 +36,7 @@ Tracks which domains have been built and their completeness.
 | Domain        | Status         | Files          | Notes                                     |
 | ------------- | -------------- | -------------- | ----------------------------------------- |
 | Unity Catalog | ✅ Built       | 8 REST + 8 SDK | Quality monitors added as separate bucket |
-| Marketplace   | 🔲 Not started | —              | —                                         |
+| Marketplace   | ✅ Built       | 3 REST + 3 SDK | Consumer, provider listings, exchanges    |
 | Apps          | 🔲 Not started | —              | —                                         |
 | SQL           | 🔲 Not started | —              | —                                         |
 | Jobs          | 🔲 Not started | —              | —                                         |
@@ -112,9 +112,13 @@ databricks/
 │   └── python-sdk/
 │       └── (matching files)
 ├── marketplace/
-│   ├── SKILL.md
+│   ├── SKILL.md                      ← Marketplace domain router
 │   ├── rest/
+│   │   ├── mkt-consumer.md
+│   │   ├── mkt-provider-listings.md
+│   │   └── mkt-provider-exchanges.md
 │   └── python-sdk/
+│       └── (matching files)
 ├── apps/
 │   └── ...
 └── (other domains as built)
