@@ -13,21 +13,22 @@
 
 Match your task to a domain, then read that domain's `SKILL.md` for sub-file routing.
 
-| What are you trying to do?                                          | Domain            | Entry point              |
-| ------------------------------------------------------------------- | ----------------- | ------------------------ |
-| Manage catalogs, schemas, tables, volumes, grants, sharing, lineage | **Unity Catalog** | `unity-catalog/SKILL.md` |
-| List or distribute data products, manage private exchanges          | **Marketplace**   | `marketplace/SKILL.md`   |
-| Deploy or manage Databricks Apps (Next.js, Flask, etc.)             | **Apps**          | `apps/SKILL.md`          |
-| Execute SQL, manage warehouses, query history                       | **SQL**           | `sql/SKILL.md`           |
-| Create or manage jobs, workflows, tasks                             | **Jobs**          | `jobs/SKILL.md`          |
-| Manage clusters, instance pools, policies                           | **Compute**       | `compute/SKILL.md`       |
-| Serve models, manage endpoints, AI Gateway, provisioned throughput  | **Model Serving** | `model-serving/SKILL.md` |
-| Manage notebooks, repos, Git folders, workspace objects             | **Workspace**     | `workspace/SKILL.md`     |
-| Manage users, groups, service principals, tokens                    | **IAM**           | `iam/SKILL.md`           |
-| Manage secrets, secret scopes                                       | **Secrets**       | `secrets/SKILL.md`       |
-| Build or manage pipelines (DLT / Lakeflow)                          | **Pipelines**     | `pipelines/SKILL.md`     |
-| Manage dashboards (Lakeview)                                        | **Dashboards**    | `dashboards/SKILL.md`    |
-| AI data assistant — Genie spaces, conversations, evals              | **Genie**         | `genie/SKILL.md`         |
+| What are you trying to do?                                          | Domain            | Entry point                |
+| ------------------------------------------------------------------- | ----------------- | -------------------------- |
+| Manage catalogs, schemas, tables, volumes, grants, sharing, lineage | **Unity Catalog** | `unity-catalog/SKILL.md`   |
+| List or distribute data products, manage private exchanges          | **Marketplace**   | `marketplace/SKILL.md`     |
+| Deploy or manage Databricks Apps (Next.js, Flask, etc.)             | **Apps**          | `apps/SKILL.md`            |
+| Execute SQL, manage warehouses, query history                       | **SQL**           | `sql/SKILL.md`             |
+| Create or manage jobs, workflows, tasks                             | **Jobs**          | `jobs/SKILL.md`            |
+| Manage clusters, instance pools, policies                           | **Compute**       | `compute/SKILL.md`         |
+| Serve models, manage endpoints, AI Gateway, provisioned throughput  | **Model Serving** | `model-serving/SKILL.md`   |
+| Manage notebooks, repos, Git folders, workspace objects             | **Workspace**     | `workspace/SKILL.md`       |
+| Manage users, groups, service principals, tokens                    | **IAM**           | `iam/SKILL.md`             |
+| Manage secrets, secret scopes                                       | **Secrets**       | `secrets/SKILL.md`         |
+| Build or manage pipelines (DLT / Lakeflow)                          | **Pipelines**     | `pipelines/SKILL.md`       |
+| Manage dashboards (Lakeview)                                        | **Dashboards**    | `dashboards/SKILL.md`      |
+| AI data assistant — Genie spaces, conversations, evals              | **Genie**         | `genie/SKILL.md`           |
+| Upload, download, manage files (Files API + DBFS)                   | **File Mgmt**     | `file-management/SKILL.md` |
 
 ## Domain Status
 
@@ -48,6 +49,7 @@ Tracks which domains have been built and their completeness.
 | Pipelines     | 🔲 Not started | —              | —                                               |
 | Dashboards    | 🔲 Not started | —              | —                                               |
 | Genie         | ✅ Built       | 2 REST + 2 SDK | Spaces/conversations + evals                    |
+| File Mgmt     | ✅ Built       | 2 REST + 2 SDK | Files API (modern) + DBFS (legacy)              |
 
 ## Auth (all domains)
 
@@ -131,6 +133,13 @@ databricks/
 │   ├── SKILL.md                      ← Model Serving domain router
 │   ├── rest/
 │   │   └── serving-endpoints.md
+│   └── python-sdk/
+│       └── (matching files)
+├── file-management/
+│   ├── SKILL.md                      ← File Management domain router
+│   ├── rest/
+│   │   ├── files-api.md
+│   │   └── dbfs-api.md
 │   └── python-sdk/
 │       └── (matching files)
 ├── apps/
