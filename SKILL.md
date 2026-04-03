@@ -21,7 +21,7 @@ Match your task to a domain, then read that domain's `SKILL.md` for sub-file rou
 | Execute SQL, manage warehouses, query history                       | **SQL**           | `sql/SKILL.md`           |
 | Create or manage jobs, workflows, tasks                             | **Jobs**          | `jobs/SKILL.md`          |
 | Manage clusters, instance pools, policies                           | **Compute**       | `compute/SKILL.md`       |
-| Serve models, manage endpoints, external models                     | **Serving**       | `serving/SKILL.md`       |
+| Serve models, manage endpoints, AI Gateway, provisioned throughput  | **Model Serving** | `model-serving/SKILL.md` |
 | Manage notebooks, repos, Git folders, workspace objects             | **Workspace**     | `workspace/SKILL.md`     |
 | Manage users, groups, service principals, tokens                    | **IAM**           | `iam/SKILL.md`           |
 | Manage secrets, secret scopes                                       | **Secrets**       | `secrets/SKILL.md`       |
@@ -41,7 +41,7 @@ Tracks which domains have been built and their completeness.
 | SQL           | ✅ Built       | 3 REST + 3 SDK | Warehouses, statement execution, queries/alerts |
 | Jobs          | 🔲 Not started | —              | —                                               |
 | Compute       | 🔲 Not started | —              | —                                               |
-| Serving       | 🔲 Not started | —              | —                                               |
+| Model Serving | ✅ Built       | 1 REST + 1 SDK | All 20 endpoints in single bucket               |
 | Workspace     | 🔲 Not started | —              | —                                               |
 | IAM           | 🔲 Not started | —              | —                                               |
 | Secrets       | 🔲 Not started | —              | —                                               |
@@ -125,6 +125,12 @@ databricks/
 │   │   ├── sql-warehouses.md
 │   │   ├── sql-statement-execution.md
 │   │   └── sql-queries-alerts.md
+│   └── python-sdk/
+│       └── (matching files)
+├── model-serving/
+│   ├── SKILL.md                      ← Model Serving domain router
+│   ├── rest/
+│   │   └── serving-endpoints.md
 │   └── python-sdk/
 │       └── (matching files)
 ├── apps/
