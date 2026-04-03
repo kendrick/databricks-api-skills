@@ -27,6 +27,7 @@ Match your task to a domain, then read that domain's `SKILL.md` for sub-file rou
 | Manage secrets, secret scopes                                       | **Secrets**       | `secrets/SKILL.md`       |
 | Build or manage pipelines (DLT / Lakeflow)                          | **Pipelines**     | `pipelines/SKILL.md`     |
 | Manage dashboards (Lakeview)                                        | **Dashboards**    | `dashboards/SKILL.md`    |
+| AI data assistant — Genie spaces, conversations, evals              | **Genie**         | `genie/SKILL.md`         |
 
 ## Domain Status
 
@@ -46,6 +47,7 @@ Tracks which domains have been built and their completeness.
 | Secrets       | 🔲 Not started | —              | —                                         |
 | Pipelines     | 🔲 Not started | —              | —                                         |
 | Dashboards    | 🔲 Not started | —              | —                                         |
+| Genie         | ✅ Built       | 2 REST + 2 SDK | Spaces/conversations + evals              |
 
 ## Auth (all domains)
 
@@ -100,6 +102,13 @@ databricks/
 │   │   ├── uc-functions-models.md
 │   │   ├── uc-metastore-admin.md
 │   │   └── uc-quality-monitors.md
+│   └── python-sdk/
+│       └── (matching files)
+├── genie/
+│   ├── SKILL.md                      ← Genie domain router
+│   ├── rest/
+│   │   ├── genie-spaces-conversations.md
+│   │   └── genie-evals.md
 │   └── python-sdk/
 │       └── (matching files)
 ├── marketplace/
