@@ -1,19 +1,18 @@
+---
+name: databricks-unity-catalog
+description: Databricks Unity Catalog governance APIs for the lakehouse, spanning about 120 endpoints across REST and the Python SDK. Use when creating or updating catalogs, schemas, tables, volumes, or functions; managing grants, ABAC policies, workspace bindings, or access requests; setting up storage credentials, external locations, connections, or Lakehouse Federation; configuring metastores, system schemas, or resource quotas; registering UC functions or ML models; tracking lineage or tags; or running data quality monitors.
+---
+
 # Databricks Unity Catalog API Skills
 
-| Property    | Value                                                               |
-| ----------- | ------------------------------------------------------------------- |
-| Name        | databricks-unity-catalog                                            |
-| Description | REST & Python SDK reference for Unity Catalog APIs (~120 endpoints) |
-| Version     | 1.0                                                                 |
-
-> Compressed from official docs — verify against your workspace config and SDK version.
-> Parent: [../SKILL.md](../SKILL.md) — top-level Databricks API router
+> Parent: [../SKILL.md](../SKILL.md) (top-level Databricks API router)
+> Compressed from official docs. Verify against your workspace config and SDK version.
 
 ## Auth
 
-See [../SKILL.md](../SKILL.md) for auth setup (REST + Python SDK).
+`Authorization: Bearer <PAT-or-OAuth-token>` against `https://<workspace-host>`. Python SDK: `WorkspaceClient()` auto-detects from env or `.databrickscfg`. See [../SKILL.md](../SKILL.md) for the full auth block (account-level base URL, OAuth M2M, notebook auto-auth in DBR 13.1+).
 
-UC-specific: most operations require `USE CATALOG` + `USE SCHEMA` on the parent objects. See `uc-grants-permissions` for details.
+UC-specific: most operations require `USE CATALOG` + `USE SCHEMA` on the parent objects. See `uc-grants-permissions` for the full grant model.
 
 ## Core Concept
 
@@ -77,23 +76,3 @@ Same domains, Python SDK-first examples. Files in `python-sdk/` with matching na
 | `python-sdk/uc-functions-models.md`     | `w.functions`, `w.registered_models`, `w.model_versions`                           |
 | `python-sdk/uc-metastore-admin.md`      | `w.metastores`, `w.system_schemas`, `w.resource_quotas`                            |
 | `python-sdk/uc-quality-monitors.md`     | `w.quality_monitors`                                                               |
-
-### REST
-
-```
-Authorization: Bearer <PAT-or-OAuth-token>
-Base URL: https://<workspace-host>
-```
-
-### Python SDK
-
-```bash
-export DATABRICKS_HOST=https://<workspace-host>
-export DATABRICKS_TOKEN=dapi...
-# Or use .databrickscfg profiles
-```
-
-```python
-from databricks.sdk import WorkspaceClient
-w = WorkspaceClient()  # auto-detects auth from env vars or .databrickscfg
-```

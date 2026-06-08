@@ -1,10 +1,11 @@
+---
+name: databricks-jobs
+description: Create, schedule, trigger, and monitor Databricks Jobs and Workflows. Use when defining or updating a job, submitting one-time runs, polling run status or output, repairing failed runs, cancelling a run, managing job permissions, or enforcing and checking job policy compliance. Heads up: policy compliance endpoints live on `/api/2.0/` while job lifecycle uses `/api/2.2/`. Easy 404 trap.
+---
+
 # Databricks Jobs & Workflows API Skills
 
-| Property    | Value                                                         |
-| ----------- | ------------------------------------------------------------- |
-| Name        | databricks-jobs                                               |
-| Description | Create, trigger, and manage jobs, runs, and policy compliance |
-| Version     | 1.0                                                           |
+> Parent: [../SKILL.md](../SKILL.md) (top-level Databricks API router)
 
 ## Usage
 
@@ -36,16 +37,6 @@
 
 ## Auth
 
-### REST
+`Authorization: Bearer <PAT-or-OAuth-token>` against `https://<workspace-host>`. Python SDK: `WorkspaceClient()` auto-detects from env or `.databrickscfg`. See [../SKILL.md](../SKILL.md) for the full auth block (account-level base URL, OAuth M2M, notebook auto-auth in DBR 13.1+).
 
-```
-Authorization: Bearer <PAT-or-OAuth-token>
-Base URL: https://<workspace-host>
-```
-
-### Python SDK
-
-```python
-from databricks.sdk import WorkspaceClient
-w = WorkspaceClient()  # auto-detects from env or .databrickscfg
-```
+API versioning gotcha: job lifecycle endpoints sit on `/api/2.2/jobs/...` but policy compliance endpoints are still on `/api/2.0/policies/...`. If you're hitting 404s on compliance calls, check the base path first.

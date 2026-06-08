@@ -1,10 +1,11 @@
+---
+name: databricks-delta-sharing
+description: Databricks Delta Sharing APIs covering shares, recipients, providers, activation tokens, and OIDC federation. Use when creating or updating a share, adding tables/volumes/notebooks to a share, granting share access, rotating recipient tokens, browsing what a provider has shared, activating a public share, or configuring OIDC federation policies for recipient identity.
+---
+
 # Databricks Delta Sharing API Skills
 
-| Property    | Value                                                        |
-| ----------- | ------------------------------------------------------------ |
-| Name        | databricks-delta-sharing                                     |
-| Description | Delta Sharing: shares, recipients, providers, and federation |
-| Version     | 1.0                                                          |
+> Parent: [../SKILL.md](../SKILL.md) (top-level Databricks API router)
 
 ## Usage
 
@@ -48,18 +49,6 @@
 
 ## Auth
 
-### REST
+`Authorization: Bearer <PAT-or-OAuth-token>` against `https://<workspace-host>`. Python SDK: `WorkspaceClient()` auto-detects from env or `.databrickscfg`. See [../SKILL.md](../SKILL.md) for the full auth block (account-level base URL, OAuth M2M, notebook auto-auth in DBR 13.1+).
 
-```
-Authorization: Bearer <PAT-or-OAuth-token>
-Base URL: https://<workspace-host>
-```
-
-Note: Recipient activation endpoints are **public** (no auth required).
-
-### Python SDK
-
-```python
-from databricks.sdk import WorkspaceClient
-w = WorkspaceClient()  # auto-detects from env or .databrickscfg
-```
+Domain-specific: recipient *activation* endpoints are public, so no auth header is required. Everything else needs the workspace token.

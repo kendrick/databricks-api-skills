@@ -1,10 +1,11 @@
+---
+name: databricks-file-management
+description: Upload, download, and manage Databricks files via the modern Files API or legacy DBFS. Use when reading or writing files on Unity Catalog volumes, workspace files, or `dbfs:/` paths; creating, listing, or deleting directories; fetching file or directory metadata; or streaming large file uploads. Prefer the Files API for new work. DBFS is legacy.
+---
+
 # Databricks File Management API Skills
 
-| Property    | Value                                                    |
-| ----------- | -------------------------------------------------------- |
-| Name        | databricks-file-management                               |
-| Description | Upload, download, and manage files via Files API or DBFS |
-| Version     | 1.0                                                      |
+> Parent: [../SKILL.md](../SKILL.md) (top-level Databricks API router)
 
 ## Usage
 
@@ -39,16 +40,4 @@
 
 ## Auth
 
-### REST
-
-```
-Authorization: Bearer <PAT-or-OAuth-token>
-Base URL: https://<workspace-host>
-```
-
-### Python SDK
-
-```python
-from databricks.sdk import WorkspaceClient
-w = WorkspaceClient()  # auto-detects from env or .databrickscfg
-```
+`Authorization: Bearer <PAT-or-OAuth-token>` against `https://<workspace-host>`. Python SDK: `WorkspaceClient()` auto-detects from env or `.databrickscfg`. See [../SKILL.md](../SKILL.md) for the full auth block (account-level base URL, OAuth M2M, notebook auto-auth in DBR 13.1+).

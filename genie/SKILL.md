@@ -1,10 +1,12 @@
+---
+name: databricks-genie
+description: Databricks Genie, the AI data assistant. Use when creating or managing Genie spaces, starting conversations, sending or polling messages, executing or downloading query results, attaching feedback, or running benchmark evaluations against a space. Covers both the runtime conversation APIs and the evals/benchmark endpoints.
+---
+
 # Databricks Genie API Skills
 
-| Property    | Value                                                        |
-| ----------- | ------------------------------------------------------------ |
-| Name        | databricks-genie                                             |
-| Description | AI-powered data assistant — spaces, conversations, and evals |
-| Version     | 1.0                                                          |
+> Parent: [../SKILL.md](../SKILL.md) (top-level Databricks API router)
+> API status: Public Preview. Endpoints and request/response shapes can still change; verify against the current docs before relying on this for production.
 
 ## Usage
 
@@ -39,16 +41,4 @@
 
 ## Auth
 
-### REST
-
-```
-Authorization: Bearer <PAT-or-OAuth-token>
-Base URL: https://<workspace-host>
-```
-
-### Python SDK
-
-```python
-from databricks.sdk import WorkspaceClient
-w = WorkspaceClient()  # auto-detects from env or .databrickscfg
-```
+`Authorization: Bearer <PAT-or-OAuth-token>` against `https://<workspace-host>`. Python SDK: `WorkspaceClient()` auto-detects from env or `.databrickscfg`. See [../SKILL.md](../SKILL.md) for the full auth block (account-level base URL, OAuth M2M, notebook auto-auth in DBR 13.1+).

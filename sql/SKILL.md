@@ -1,10 +1,11 @@
+---
+name: databricks-sql
+description: Run SQL on Databricks via warehouses, statement execution, saved queries, and alerts. Use when creating, starting, or stopping a SQL warehouse, setting warehouse permissions or workspace defaults, executing a SQL statement (sync or async), polling for results via INLINE or EXTERNAL_LINKS disposition, downloading result chunks, cancelling a long-running statement, saving queries, or building alerts on query results. Heads up: EXTERNAL_LINKS pre-signed URLs expire fast, so fetch chunks promptly.
+---
+
 # Databricks SQL API Skills
 
-| Property    | Value                                                          |
-| ----------- | -------------------------------------------------------------- |
-| Name        | databricks-sql                                                 |
-| Description | SQL warehouses, statement execution, saved queries, and alerts |
-| Version     | 1.0                                                            |
+> Parent: [../SKILL.md](../SKILL.md) (top-level Databricks API router)
 
 ## Usage
 
@@ -44,16 +45,6 @@
 
 ## Auth
 
-### REST
+`Authorization: Bearer <PAT-or-OAuth-token>` against `https://<workspace-host>`. Python SDK: `WorkspaceClient()` auto-detects from env or `.databrickscfg`. See [../SKILL.md](../SKILL.md) for the full auth block (account-level base URL, OAuth M2M, notebook auto-auth in DBR 13.1+).
 
-```
-Authorization: Bearer <PAT-or-OAuth-token>
-Base URL: https://<workspace-host>
-```
-
-### Python SDK
-
-```python
-from databricks.sdk import WorkspaceClient
-w = WorkspaceClient()  # auto-detects from env or .databrickscfg
-```
+Result-fetching gotcha: with `EXTERNAL_LINKS` disposition, the API returns short-lived pre-signed URLs. Treat them as ephemeral. Fetch the chunks immediately rather than caching the URLs, and re-poll the statement to refresh them if a fetch fails.

@@ -1,10 +1,11 @@
+---
+name: databricks-model-serving
+description: Databricks Model Serving APIs for deploying, querying, and managing real-time inference endpoints for ML and foundation models. Use when creating or updating a serving endpoint, configuring rate limits or AI Gateway, setting up provisioned throughput, querying a deployed model, fetching logs/metrics/OpenAPI schema, managing endpoint permissions, or wiring up tags and notification settings.
+---
+
 # Databricks Model Serving API Skills
 
-| Property    | Value                                                                    |
-| ----------- | ------------------------------------------------------------------------ |
-| Name        | databricks-model-serving                                                 |
-| Description | Create, configure, query, and manage model serving endpoints             |
-| Version     | 1.0                                                                      |
+> Parent: [../SKILL.md](../SKILL.md) (top-level Databricks API router)
 
 ## Usage
 
@@ -37,16 +38,4 @@
 
 ## Auth
 
-### REST
-
-```
-Authorization: Bearer <PAT-or-OAuth-token>
-Base URL: https://<workspace-host>
-```
-
-### Python SDK
-
-```python
-from databricks.sdk import WorkspaceClient
-w = WorkspaceClient()  # auto-detects from env or .databrickscfg
-```
+`Authorization: Bearer <PAT-or-OAuth-token>` against `https://<workspace-host>`. Python SDK: `WorkspaceClient()` auto-detects from env or `.databrickscfg`. See [../SKILL.md](../SKILL.md) for the full auth block (account-level base URL, OAuth M2M, notebook auto-auth in DBR 13.1+).

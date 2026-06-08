@@ -1,10 +1,12 @@
+---
+name: databricks-marketplace
+description: Databricks Marketplace APIs. There are three distinct audiences. Use as a consumer to browse listings, install or uninstall data products, or request personalization; as a provider to publish or update listings, upload files, view analytics, or handle incoming personalization requests; as an account admin to create private exchanges, manage exchange listings, or set exchange filters.
+---
+
 # Databricks Marketplace API Skills
 
-| Property    | Value                                                             |
-| ----------- | ----------------------------------------------------------------- |
-| Name        | databricks-marketplace                                            |
-| Description | Browse, install, publish, and manage data products on Marketplace |
-| Version     | 1.0                                                               |
+> Parent: [../SKILL.md](../SKILL.md) (top-level Databricks API router)
+> API status: Public Preview. The `marketplace` token scope is gated as preview; verify availability for your workspace before building production flows on it.
 
 ## Usage
 
@@ -47,16 +49,6 @@
 
 ## Auth
 
-### REST
+`Authorization: Bearer <PAT-or-OAuth-token>` against `https://<workspace-host>`. Python SDK: `WorkspaceClient()` auto-detects from env or `.databrickscfg`. See [../SKILL.md](../SKILL.md) for the full auth block (account-level base URL, OAuth M2M, notebook auto-auth in DBR 13.1+).
 
-```
-Authorization: Bearer <PAT-or-OAuth-token>
-Base URL: https://<workspace-host>
-```
-
-### Python SDK
-
-```python
-from databricks.sdk import WorkspaceClient
-w = WorkspaceClient()  # auto-detects from env or .databrickscfg
-```
+Domain-specific: the token needs the **`marketplace`** API scope. That scope is in public preview; service principals created against an older account may need re-issuing.
