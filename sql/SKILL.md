@@ -1,6 +1,6 @@
 ---
 name: databricks-sql
-description: Run SQL on Databricks via warehouses, statement execution, saved queries, and alerts. Use when creating, starting, or stopping a SQL warehouse, setting warehouse permissions or workspace defaults, executing a SQL statement (sync or async), polling for results via INLINE or EXTERNAL_LINKS disposition, downloading result chunks, cancelling a long-running statement, saving queries, or building alerts on query results. Heads up: EXTERNAL_LINKS pre-signed URLs expire fast, so fetch chunks promptly.
+description: "Run SQL on Databricks via warehouses, statement execution, saved queries, and alerts. Use when creating, starting, or stopping a SQL warehouse, setting warehouse permissions or workspace defaults, executing a SQL statement (sync or async), polling for results via INLINE or EXTERNAL_LINKS disposition, downloading result chunks, cancelling a long-running statement, saving queries, or building alerts on query results. Heads up: EXTERNAL_LINKS pre-signed URLs expire fast, so fetch chunks promptly."
 ---
 
 # Databricks SQL API Skills

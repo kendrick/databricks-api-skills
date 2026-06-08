@@ -1,6 +1,6 @@
 ---
 name: databricks-jobs
-description: Create, schedule, trigger, and monitor Databricks Jobs and Workflows. Use when defining or updating a job, submitting one-time runs, polling run status or output, repairing failed runs, cancelling a run, managing job permissions, or enforcing and checking job policy compliance. Heads up: policy compliance endpoints live on `/api/2.0/` while job lifecycle uses `/api/2.2/`. Easy 404 trap.
+description: "Create, schedule, trigger, and monitor Databricks Jobs and Workflows. Use when defining or updating a job, submitting one-time runs, polling run status or output, repairing failed runs, cancelling a run, managing job permissions, or enforcing and checking job policy compliance. Heads up: policy compliance endpoints live on `/api/2.0/` while job lifecycle uses `/api/2.2/`. Easy 404 trap."
 ---
 
 # Databricks Jobs & Workflows API Skills

@@ -1,6 +1,6 @@
 ---
 name: databricks-api
-description: Top-level router for Databricks platform REST APIs and the Python SDK. Use for any Databricks API or SDK task: Unity Catalog (catalogs, schemas, tables, grants, lineage, quality monitors), Jobs and Workflows, SQL warehouses and statement execution, Model Serving and AI Gateway, Delta Sharing, Genie, Marketplace, or file management on volumes and DBFS. It will route you to the right domain skill. Also use when you're not sure which Databricks API owns the task.
+description: "Top-level router for Databricks platform REST APIs and the Python SDK. Use for any Databricks API or SDK task: Unity Catalog (catalogs, schemas, tables, grants, lineage, quality monitors), Jobs and Workflows, SQL warehouses and statement execution, Model Serving and AI Gateway, Delta Sharing, Genie, Marketplace, or file management on volumes and DBFS. It will route you to the right domain skill. Also use when you're not sure which Databricks API owns the task."
 ---
 
 # Databricks API Reference
