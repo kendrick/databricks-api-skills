@@ -63,6 +63,20 @@ This overwrites the raw docs in `{domain}/docs/raw/` with the freshly fetched ve
 
 Delete `refresh-report-{domain}.md` from the repo root once changes are committed. It's a transient artifact, not meant to be checked in.
 
+## Troubleshooting
+
+### "Every operation shows as CHANGED"
+
+If `--check` flags 80%+ of a domain's ops as changed, the cache is probably polluted with Jina render-timeout placeholders. The placeholder is a partial-render warning that Jina returns when a JS-heavy doc page doesn't finish hydrating in time; it gets cached during transient Jina failures and shows up as phantom drift on subsequent runs.
+
+Fix:
+
+```bash
+bash tools/refresh.sh --refetch-broken --domain <name>
+```
+
+This scans `{domain}/docs/raw/` for placeholder files, re-fetches each via the hardened `fetch_clean` (longer `X-Timeout` and one retry), and bumps the manifest entry. Omit `--domain` to clean every domain. Re-run `--check` after; if drift drops to a sensible number, the original "drift" was phantom.
+
 ## Adding a New Domain
 
 When a new domain is added via `databricks-skill-generator-prompt.md`, the generator writes `{domain}/docs/sources.json` at build time (Phase 0d). No backfill needed for new domains.

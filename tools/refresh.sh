@@ -83,12 +83,13 @@ JINA_SLEEP=3
 
 usage() {
     cat <<EOF
-Usage: $0 [--backfill | --check | --apply] [--domain <name>] [--verbose]
+Usage: $0 [--backfill | --check | --apply | --refetch-broken] [--domain <name>] [--verbose]
 
 Modes:
-  --backfill  Build {domain}/docs/sources.json from on-disk raw docs (idempotent).
-  --check     (default) Re-fetch via Jina and report drift. Read-only.
-  --apply     Re-fetch via Jina, overwrite changed raw docs, update manifest.
+  --backfill         Build {domain}/docs/sources.json from on-disk raw docs (idempotent).
+  --check            (default) Re-fetch via Jina and report drift. Read-only.
+  --apply            Re-fetch via Jina, overwrite changed raw docs, update manifest.
+  --refetch-broken   Find raw/*.md cached as Jina partial-render placeholders and re-fetch them.
 
 Options:
   --domain <name>  Limit to a single domain (e.g. genie). Default: all domains.
@@ -104,6 +105,7 @@ while [[ $# -gt 0 ]]; do
         --backfill) MODE="backfill"; shift ;;
         --check)    MODE="check"; shift ;;
         --apply)    MODE="apply"; shift ;;
+        --refetch-broken) MODE="refetch-broken"; shift ;;
         --domain)   DOMAIN="${2:-}"; [[ -z "$DOMAIN" ]] && { echo "ERROR: --domain requires a value" >&2; exit 2; }; shift 2 ;;
         --verbose)  VERBOSE=1; shift ;;
         -h|--help)  usage; exit 0 ;;
@@ -203,21 +205,30 @@ backfill_domain() {
 # --- check / apply ---------------------------------------------------------
 
 # Fetch a URL via Jina to stdout, with the nav-strip applied. Returns non-zero on failure.
+# Two failure modes Jina gives us look like success: a near-empty body (SPA never
+# loaded) and a body containing the literal "page maybe not yet fully loaded" warning
+# (SPA partially loaded). Both used to land in the cache and look like real docs on
+# subsequent runs. We catch both, bump X-Timeout above Jina's default to give SPAs
+# room to hydrate, and retry once before giving up.
 fetch_clean() {
     local url="$1"
     local tmp; tmp=$(mktemp)
-    if ! curl -sf "https://r.jina.ai/${url}" -o "$tmp"; then
-        rm -f "$tmp"
-        return 1
-    fi
-    # Sanity: Jina sometimes returns a near-empty page on SPA failures.
-    if [[ $(wc -c < "$tmp") -lt 200 ]]; then
-        rm -f "$tmp"
-        return 1
-    fi
-    clean_jina "$tmp"
-    cat "$tmp"
+    local placeholder='page maybe not yet fully loaded'
+    local attempt
+    for attempt in 1 2; do
+        local timeout_s=$(( attempt == 1 ? 30 : 60 ))
+        if curl -sf -H "X-Timeout: $timeout_s" "https://r.jina.ai/${url}" -o "$tmp" \
+            && [[ $(wc -c < "$tmp") -ge 200 ]] \
+            && ! grep -q "$placeholder" "$tmp"; then
+            clean_jina "$tmp"
+            cat "$tmp"
+            rm -f "$tmp"
+            return 0
+        fi
+        [[ $attempt -eq 1 ]] && sleep 10
+    done
     rm -f "$tmp"
+    return 1
 }
 
 check_or_apply_domain() {
@@ -346,6 +357,59 @@ check_or_apply_domain() {
     fi
 }
 
+# --- refetch-broken --------------------------------------------------------
+
+# Walk a domain's cached raw docs, find any that contain the Jina partial-render
+# warning ("page maybe not yet fully loaded"), and re-fetch each via fetch_clean
+# (which has the same hardening as --check/--apply). On success: replace the file
+# and bump sha256 + fetched_at in the manifest. On failure: leave the file alone
+# and report it so the user can investigate.
+refetch_broken_domain() {
+    local domain="$1"
+    local raw_dir="$REPO_ROOT/$domain/docs/raw"
+    local manifest="$REPO_ROOT/$domain/docs/sources.json"
+    local placeholder='page maybe not yet fully loaded'
+    local now; now=$(now_iso)
+    local ok=0 fail=0 total=0
+
+    if [[ ! -f "$manifest" ]]; then
+        info "ERROR: manifest not found at $(rel_path "$manifest")."
+        return 5
+    fi
+
+    local f op url tmp sha tmp_m
+    while IFS= read -r f; do
+        [[ -z "$f" ]] && continue
+        total=$((total + 1))
+        op=$(basename "$f" .md)
+        url=$(jq -r --arg op "$op" '.[] | select(.operation == $op) | .url' "$manifest")
+        if [[ -z "$url" || "$url" == "null" ]]; then
+            info "  SKIP  $domain/$op: not in manifest"
+            fail=$((fail + 1))
+            continue
+        fi
+        log "refetch $domain/$op"
+        tmp=$(mktemp)
+        if fetch_clean "$url" > "$tmp" 2>/dev/null; then
+            sha=$(hash_file "$tmp")
+            mv "$tmp" "$f"
+            tmp_m=$(mktemp)
+            jq --arg op "$op" --arg sha "$sha" --arg ts "$now" \
+                '(.[] | select(.operation == $op)) |= (.sha256 = $sha | .fetched_at = $ts)' \
+                "$manifest" > "$tmp_m" && mv "$tmp_m" "$manifest"
+            info "  OK    $domain/$op"
+            ok=$((ok + 1))
+        else
+            rm -f "$tmp"
+            info "  FAIL  $domain/$op (still broken; manual investigation needed)"
+            fail=$((fail + 1))
+        fi
+        sleep "$JINA_SLEEP"
+    done < <(grep -rl "$placeholder" "$raw_dir" 2>/dev/null | sort)
+
+    info "refetch-broken $domain: $total placeholder file(s) ($ok recovered, $fail still broken)"
+}
+
 # --- main ------------------------------------------------------------------
 
 case "$MODE" in
@@ -357,6 +421,11 @@ case "$MODE" in
     check|apply)
         for d in $(domains_to_process); do
             check_or_apply_domain "$d" "$MODE"
+        done
+        ;;
+    refetch-broken)
+        for d in $(domains_to_process); do
+            refetch_broken_domain "$d"
         done
         ;;
 esac
