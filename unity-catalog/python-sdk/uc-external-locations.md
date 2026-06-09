@@ -167,7 +167,8 @@ conn = w.connections.create(
     comment="Production PG",
 )
 ```
-**Supported types:** MYSQL, POSTGRESQL, SNOWFLAKE, REDSHIFT, SQLDW, SQLSERVER, DATABRICKS, BIGQUERY, ORACLE, TERADATA, SALESFORCE, and more.
+**Supported types:** MYSQL, POSTGRESQL, SNOWFLAKE, REDSHIFT, SQLDW, SQLSERVER, DATABRICKS, BIGQUERY, ORACLE, TERADATA, SALESFORCE, SALESFORCE_DATA_CLOUD, WORKDAY_RAAS, GA4_RAW_DATA, SERVICENOW, GLUE, HTTP, POWER_BI, CONFLUENCE, HUBSPOT, ZENDESK (Beta: META_MARKETING, GITHUB, OUTLOOK, SMARTSHEET).
+Optional `environment_settings` (Public Preview) -- object with `environment_version` and `java_dependencies` for JAR-backed connections.
 
 ### List / Get / Update / Delete
 ```python
@@ -184,7 +185,7 @@ w.connections.delete(name="my-pg-conn")
 
 ---
 
-## Temporary Credentials (Preview)
+## Temporary Credentials
 
 ### Temporary Path Credentials
 ```python

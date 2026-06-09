@@ -20,7 +20,7 @@ w = WorkspaceClient()  # uses DATABRICKS_HOST + DATABRICKS_TOKEN env vars
 | Entity Tag Assignments | `w.entity_tag_assignments` | `create`, `list`, `get`, `update`, `delete` |
 | External Metadata | `w.external_metadata` | `create_external_metadata`, `list_external_metadata`, `get_external_metadata`, `update_external_metadata`, `delete_external_metadata` |
 
-All three APIs are **Public Preview**.
+External Lineage and External Metadata are **Public Preview**. Entity Tag Assignments is **GA**.
 
 ## 1. External Lineage
 

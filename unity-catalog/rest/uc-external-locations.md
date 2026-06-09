@@ -35,8 +35,8 @@ All endpoints: `Authorization: Bearer <token>`, base URL `https://<workspace>.cl
 | | GET | `/api/2.1/unity-catalog/connections/{name}` | Get |
 | | PATCH | `/api/2.1/unity-catalog/connections/{name}` | Update |
 | | DELETE | `/api/2.1/unity-catalog/connections/{name}` | Delete |
-| Temp Credentials | POST | `/api/2.0/unity-catalog/temporary-path-credentials` | For external locations (preview) |
-| | POST | `/api/2.0/unity-catalog/temporary-table-credentials` | For table data (preview) |
+| Temp Credentials | POST | `/api/2.0/unity-catalog/temporary-path-credentials` | For external locations |
+| | POST | `/api/2.0/unity-catalog/temporary-table-credentials` | For table data |
 
 ---
 
@@ -113,7 +113,7 @@ POST /api/2.1/unity-catalog/temporary-service-credentials
 {"credential_name": "my-service-cred"}
 ```
 **Permission:** Metastore admin or `ACCESS` privilege on the service credential.
-**Response:** `aws_temp_credentials` with `access_key_id`, `secret_access_key`, `session_token`, plus `expiration_time`.
+**Response:** Cloud-specific credentials object plus `expiration_time`. AWS returns `aws_temp_credentials` (`access_key_id`, `secret_access_key`, `session_token`); Cloudflare R2 returns `r2_temp_credentials` with the same fields. Azure/GCP return their own variants.
 
 ### Validate
 ```
@@ -132,8 +132,8 @@ POST /api/2.1/unity-catalog/connections
 {"name": "my-pg-conn", "connection_type": "POSTGRESQL", "options": {"host": "pg.example.com", "port": "5432", "user": "admin", "password": "secret"}}
 ```
 **Required:** `name`, `connection_type`, `options` (map of key-value pairs, contents depend on type).
-**Optional:** `comment`, `properties`, `read_only`.
-**Supported types:** MYSQL, POSTGRESQL, SNOWFLAKE, REDSHIFT, SQLDW, SQLSERVER, DATABRICKS, BIGQUERY, ORACLE, TERADATA, SALESFORCE, and more.
+**Optional:** `comment`, `properties`, `read_only`, `environment_settings` (Public Preview) -- object with `environment_version` and `java_dependencies[]` for JAR-backed connections.
+**Supported types:** MYSQL, POSTGRESQL, SNOWFLAKE, REDSHIFT, SQLDW, SQLSERVER, DATABRICKS, BIGQUERY, ORACLE, TERADATA, SALESFORCE, SALESFORCE_DATA_CLOUD, WORKDAY_RAAS, GA4_RAW_DATA, SERVICENOW, GLUE, HTTP, POWER_BI, CONFLUENCE, HUBSPOT, ZENDESK (Beta: META_MARKETING, GITHUB, OUTLOOK, SMARTSHEET).
 
 ### List / Get / Update / Delete
 - **List:** `GET .../connections?max_results=0` -- paginated.
@@ -143,7 +143,7 @@ POST /api/2.1/unity-catalog/connections
 
 ---
 
-## Temporary Credentials (Preview)
+## Temporary Credentials
 
 ### Temporary Path Credentials
 ```

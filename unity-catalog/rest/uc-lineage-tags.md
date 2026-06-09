@@ -10,7 +10,7 @@ External lineage relationships, entity tag assignments, external metadata object
 All endpoints require `Authorization: Bearer <token>` header. API scope: `unity-catalog`.
 Base: `https://<workspace>.cloud.databricks.com`
 
-All three APIs are **Public Preview**.
+External Lineage and External Metadata are **Public Preview**. Entity Tag Assignments is **GA**.
 
 ## Endpoint Summary
 
