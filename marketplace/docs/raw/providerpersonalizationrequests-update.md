@@ -9,9 +9,11 @@ Public preview
 
 `PUT/api/2.0/marketplace-provider/listings/{listing_id}/personalization-requests/{request_id}/request-status`
 
+`PUT/api/2.1/marketplace-provider/listings/{listing_id}/personalization-requests/{request_id}/request-status`
+
 Update personalization request. This method only permits updating the status of the request.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Path parameters
 

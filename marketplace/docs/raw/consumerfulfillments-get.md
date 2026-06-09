@@ -11,7 +11,7 @@ Public preview
 
 Get a high level preview of the metadata of listing installable content.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Path parameters
 

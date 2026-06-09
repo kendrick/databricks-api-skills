@@ -9,9 +9,11 @@ Public preview
 
 `POST/api/2.0/marketplace-exchange/exchanges`
 
+`POST/api/2.1/marketplace-exchange/exchanges`
+
 Create an exchange
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Request body
 

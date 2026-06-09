@@ -9,9 +9,11 @@ Public preview
 
 `DELETE/api/2.0/marketplace-exchange/exchanges-for-listing/{id}`
 
+`DELETE/api/2.1/marketplace-exchange/exchanges-for-listing/{id}`
+
 Disassociate an exchange with a listing
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Path parameters
 

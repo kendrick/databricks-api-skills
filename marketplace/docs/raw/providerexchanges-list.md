@@ -9,9 +9,11 @@ Public preview
 
 `GET/api/2.0/marketplace-exchange/exchanges`
 
+`GET/api/2.1/marketplace-exchange/exchanges`
+
 List exchanges visible to provider
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Query parameters
 

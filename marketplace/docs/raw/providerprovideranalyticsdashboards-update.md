@@ -9,9 +9,11 @@ Public preview
 
 `PUT/api/2.0/marketplace-provider/analytics_dashboard/{id}`
 
+`PUT/api/2.1/marketplace-provider/analytics_dashboard/{id}`
+
 Update provider analytics dashboard.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Path parameters
 

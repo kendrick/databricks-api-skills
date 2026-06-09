@@ -190,3 +190,4 @@ DELETE /api/2.0/marketplace-exchange/filters/{id}
 - GET exchange returns embedded `filters` and `linked_listings`, but list endpoints return them as separate arrays -- use the dedicated list endpoints for pagination.
 - All list endpoints use cursor-based pagination (`page_token` / `next_page_token`).
 - Exchange names must be unique within the provider's scope.
+- Both `/api/2.0/marketplace-exchange/...` and `/api/2.1/marketplace-exchange/...` paths are accepted; bodies and responses are identical.

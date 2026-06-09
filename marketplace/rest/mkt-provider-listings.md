@@ -263,3 +263,4 @@ Returns `{id, dashboard_id, version}` with newly created Lakeview dashboard.
 - `is_featured` on providers is read-only for consumers; ignored on create/update
 - Personalization request `share` field is only for data listings; empty/ignored for MCP and App listings
 - Analytics dashboard `id` is Marketplace-specific; `dashboard_id` is the Lakeview ID for opening
+- Both `/api/2.0/marketplace-provider/...` and `/api/2.1/marketplace-provider/...` paths are accepted; bodies and responses are identical.

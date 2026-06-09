@@ -9,9 +9,11 @@ Public preview
 
 `GET/api/2.0/marketplace-provider/analytics_dashboard/latest`
 
+`GET/api/2.1/marketplace-provider/analytics_dashboard/latest`
+
 Get latest version of provider analytics dashboard.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Responses
 
@@ -27,4 +29,8 @@ version here is latest logical version of the dashboard template
 
 200
 
-{ "version": 0 }
+{
+
+"version":0
+
+}

@@ -9,9 +9,11 @@ Public preview
 
 `GET/api/2.0/marketplace-provider/providers`
 
+`GET/api/2.1/marketplace-provider/providers`
+
 List provider profiles for account.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Query parameters
 

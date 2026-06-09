@@ -9,9 +9,11 @@ Public preview
 
 `GET/api/2.0/marketplace-provider/listings/{id}`
 
+`GET/api/2.1/marketplace-provider/listings/{id}`
+
 Get a listing
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Path parameters
 

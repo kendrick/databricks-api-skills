@@ -9,9 +9,11 @@ Public preview
 
 `POST/api/2.0/marketplace-provider/analytics_dashboard`
 
+`POST/api/2.1/marketplace-provider/analytics_dashboard`
+
 Create provider analytics dashboard. Returns Marketplace specific `id`. Not to be confused with the Lakeview dashboard id.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Responses
 
@@ -20,6 +22,12 @@ API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/a
 Request completed successfully.
 
 [`id`](https://docs.databricks.com/api/workspace/providerprovideranalyticsdashboards/create#id)string
+
+# Request samples
+
+JSON
+
+{}
 
 # Response samples
 

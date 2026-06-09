@@ -1,5 +1,5 @@
-Title: Delete an exchange | Provider Exchanges API | REST API reference
+Title: Databricks REST API reference
 
 URL Source: https://docs.databricks.com/api/workspace/providerexchanges/delete
 
-Markdown Content:
+Warning: This is a cached snapshot of the original page, consider retry with caching opt-out.

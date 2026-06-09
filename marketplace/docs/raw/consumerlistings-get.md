@@ -11,7 +11,7 @@ Public preview
 
 Get a published listing in the Databricks Marketplace that the consumer has access to.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Path parameters
 

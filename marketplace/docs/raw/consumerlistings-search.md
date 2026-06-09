@@ -11,7 +11,7 @@ Public preview
 
 Search published listings in the Databricks Marketplace that the consumer has access to. This query supports a variety of different search parameters and performs fuzzy matching.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Query parameters
 

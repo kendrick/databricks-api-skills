@@ -9,9 +9,11 @@ Public preview
 
 `POST/api/2.0/marketplace-provider/listing`
 
+`POST/api/2.1/marketplace-provider/listing`
+
 Create a new listing
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Request body
 

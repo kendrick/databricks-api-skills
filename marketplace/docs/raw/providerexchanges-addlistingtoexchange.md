@@ -9,9 +9,11 @@ Public preview
 
 `POST/api/2.0/marketplace-exchange/exchanges-for-listing`
 
+`POST/api/2.1/marketplace-exchange/exchanges-for-listing`
+
 Associate an exchange with a listing
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Request body
 

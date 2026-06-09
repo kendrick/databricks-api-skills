@@ -11,7 +11,7 @@ Public preview
 
 Get all listings fulfillments associated with a listing. A _fulfillment_ is a potential installation. Standard installations contain metadata about the attached share or git repo. Only one of these fields will be present. Personalized installations contain metadata about the attached share or git repo, as well as the Delta Sharing recipient type.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Path parameters
 

@@ -9,9 +9,11 @@ Public preview
 
 `GET/api/2.0/marketplace-provider/analytics_dashboard`
 
+`GET/api/2.1/marketplace-provider/analytics_dashboard`
+
 Get provider analytics dashboard.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Responses
 

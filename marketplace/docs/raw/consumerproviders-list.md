@@ -11,7 +11,7 @@ Public preview
 
 List all providers in the Databricks Marketplace with at least one visible listing.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Query parameters
 

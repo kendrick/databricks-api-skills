@@ -11,7 +11,7 @@ Public preview
 
 List all installations across all listings.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Query parameters
 
@@ -69,72 +69,4 @@ Enum: `INSTALLED | FAILED`
 
 200
 
-{
-
-"installations":[
-
-{
-
-"catalog_name":"string",
-
-"error_message":"string",
-
-"id":"string",
-
-"installed_on":0,
-
-"listing_id":"string",
-
-"listing_name":"string",
-
-"recipient_type":"DELTA_SHARING_RECIPIENT_T YPE_DATABRICKS",
-
-"repo_name":"string",
-
-"repo_path":"string",
-
-"share_name":"string",
-
-"status":"INSTALLED",
-
-"token_detail":{
-
-"bearerToken":"string",
-
-"endpoint":"string",
-
-"expirationTime":"string",
-
-"shareCredentialsVersion":0
-
-},
-
-"tokens":[
-
-{
-
-"activation_url":"string",
-
-"created_at":0,
-
-"created_by":"string",
-
-"expiration_time":0,
-
-"id":"string",
-
-"updated_at":0,
-
-"updated_by":"string"
-
-}
-
-]
-
-}
-
-],
-
-"next_page_token":"string"
-
-}
+{ "installations": [ { "catalog_name": "string", "error_message": "string", "id": "string", "installed_on": 0, "listing_id": "string", "listing_name": "string", "recipient_type": "DELTA_SHARING_RECIPIENT_TYPE_DATABRICKS", "repo_name": "string", "repo_path": "string", "share_name": "string", "status": "INSTALLED", "token_detail": { "bearerToken": "string", "endpoint": "string", "expirationTime": "string", "shareCredentialsVersion": 0 }, "tokens": [ { "activation_url": "string", "created_at": 0, "created_by": "string", "expiration_time": 0, "id": "string", "updated_at": 0, "updated_by": "string" } ] } ], "next_page_token": "string" }

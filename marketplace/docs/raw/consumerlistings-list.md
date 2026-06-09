@@ -11,7 +11,7 @@ Public preview
 
 List all published listings in the Databricks Marketplace that the consumer has access to.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Query parameters
 
@@ -39,11 +39,9 @@ Enum: `ADVERTISING_AND_MARKETING | CLIMATE_AND_ENVIRONMENT | COMMERCE | DEMOGRAP
 
 Matches any of the following categories
 
-[`tags`](https://docs.databricks.com/api/workspace/consumerlistings/list#tags)Array of object
+[`tags`](https://docs.databricks.com/api/workspace/consumerlistings/list#tags)object
 
-Matches any of the following tags
-
-Array [
+Matches listings with this tag
 
 [`tag_name`](https://docs.databricks.com/api/workspace/consumerlistings/list#tags-tag_name)string
 
@@ -54,8 +52,6 @@ Tag name (enum)
 [`tag_values`](https://docs.databricks.com/api/workspace/consumerlistings/list#tags-tag_values)Array of string
 
 String representation of the tag value. Values should be string literals (no complex types)
-
- ]
 
 [`is_free`](https://docs.databricks.com/api/workspace/consumerlistings/list#is_free)boolean
 

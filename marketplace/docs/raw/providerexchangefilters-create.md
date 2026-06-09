@@ -9,9 +9,11 @@ Public preview
 
 `POST/api/2.0/marketplace-exchange/filters`
 
+`POST/api/2.1/marketplace-exchange/filters`
+
 Add an exchange filter.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Request body
 
@@ -49,38 +51,10 @@ Request completed successfully.
 
 JSON
 
-{
-
-"filter":{
-
-"created_at":0,
-
-"created_by":"string",
-
-"exchange_id":"string",
-
-"filter_type":"GLOBAL_METASTORE_ID",
-
-"filter_value":"string",
-
-"id":"string",
-
-"name":"string",
-
-"updated_at":0,
-
-"updated_by":"string"
-
-}
-
-}
+{ "filter": { "created_at": 0, "created_by": "string", "exchange_id": "string", "filter_type": "GLOBAL_METASTORE_ID", "filter_value": "string", "id": "string", "name": "string", "updated_at": 0, "updated_by": "string" } }
 
 # Response samples
 
 200
 
-{
-
-"filter_id":"string"
-
-}
+{ "filter_id": "string" }

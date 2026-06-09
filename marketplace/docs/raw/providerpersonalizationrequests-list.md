@@ -9,9 +9,11 @@ Public preview
 
 `GET/api/2.0/marketplace-provider/personalization-requests`
 
+`GET/api/2.1/marketplace-provider/personalization-requests`
+
 List personalization requests to this provider. This will return all personalization requests, regardless of which listing they are for.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Query parameters
 

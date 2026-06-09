@@ -42,7 +42,7 @@ for listing in w.consumer_listings.search(query="weather data", is_free=True):
     print(listing.summary.name)
 ```
 
-`list` optional: `page_size`, `page_token`, `assets`, `categories`, `tags`, `is_free`, `is_private_exchange`, `is_staff_pick`, `provider_ids`.
+`list` optional: `page_size`, `page_token`, `assets`, `categories`, `tags` (single `{tag_name, tag_values}`, not a list), `is_free`, `is_private_exchange`, `is_staff_pick`, `provider_ids`.
 `search` required: `query`. Optional: same filters minus `tags`, `is_staff_pick`.
 
 ---

@@ -9,9 +9,11 @@ Public preview
 
 `POST/api/2.0/marketplace-provider/files`
 
+`POST/api/2.1/marketplace-provider/files`
+
 Create a file. Currently, only provider icons and attached notebooks are supported.
 
-API scopes (preview):[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
+API scopes:[`marketplace`](https://docs.databricks.com/api/workspace/api/scopes#marketplace)
 
 ### Request body
 
