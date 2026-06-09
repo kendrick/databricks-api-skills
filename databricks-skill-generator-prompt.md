@@ -76,7 +76,30 @@ Jina can't extract client-rendered (SPA) pages. For each fetch, check if the out
 3. User provides the content manually
 4. Use `databricks` CLI `--help` output for the relevant command group
 
-### 0d. Checkpoint
+### 0e. Write the source manifest
+
+After fetch + cleanup, generate `{domain}/docs/sources.json` so the refresh tooling can detect drift later. One entry per successfully fetched raw doc:
+
+```json
+[
+  {
+    "operation": "catalogs-create",
+    "url": "https://docs.databricks.com/api/workspace/catalogs/create",
+    "fetched_at": "<ISO 8601 UTC>",
+    "sha256": "<shasum -a 256 of the cleaned raw file>"
+  }
+]
+```
+
+The easiest way is to run the repo's existing tool against the new domain:
+
+```bash
+bash tools/refresh.sh --backfill --domain <new-domain-slug>
+```
+
+It walks `docs/raw/`, parses each file's `URL Source:` line, hashes the content, and writes the manifest. Idempotent.
+
+### 0f. Checkpoint
 
 ```
 ## Fetch Summary — [Domain Name]
@@ -84,6 +107,7 @@ Jina can't extract client-rendered (SPA) pages. For each fetch, check if the out
 Total endpoints:  XX
 Fetched:          XX
 Failed/empty:     XX (listed below)
+Manifest entries: XX (should equal Fetched)
 
 Failed URLs:
 - [url] (reason)
@@ -365,6 +389,7 @@ Lean into vocabulary a real user would type: verb phrases ("query a model endpoi
 3. **Cross-references:** Verify all `> See also:` links point to real files.
 4. **Unfetched gaps:** Note which files may be incomplete.
 5. **SDK caveat:** Remind user to spot-check `databricks-sdk` field names.
+6. **Manifest integrity:** Confirm `{domain}/docs/sources.json` exists, has one entry per raw doc, and that each entry's `sha256` matches the on-disk file. Re-run `bash tools/refresh.sh --backfill --domain <name>` if anything's out of sync.
 
 ---
 

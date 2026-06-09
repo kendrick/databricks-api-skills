@@ -98,3 +98,7 @@ To add a new domain, use the skill generator prompt:
 
 Feed it a domain name + endpoint list and it will produce the full skill set with SKILL.md router.
 After generating, update the Domain Status table above.
+
+## Keeping skills current
+
+Each domain ships with `{domain}/docs/sources.json`, a manifest mapping every endpoint to its Databricks doc URL and a sha256 of the cached raw content. Run `bash tools/refresh.sh --check` to detect drift against upstream, then use the `databricks-skill-refresh` skill (see `refresh-skill/SKILL.md`) to walk through applying any changes. The script self-checks its prereqs (`curl`, `jq`, `shasum`/`sha256sum`) and fails fast with install hints if anything's missing.

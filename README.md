@@ -82,6 +82,22 @@ Each domain follows the same shape:
 
 After it runs, update the Domain Status table in [SKILL.md](SKILL.md) so the roadmap stays current.
 
+## Keeping Skills Current
+
+Databricks docs evolve over time: fields get added, endpoints come out of preview, occasionally something gets renamed. To detect drift, the repo tracks each fetched doc's source URL and a sha256 of the cached content in a per-domain manifest at `{domain}/docs/sources.json`.
+
+A bash script handles the deterministic side:
+
+```bash
+bash tools/refresh.sh --check --domain <name>      # detect drift, write a report
+bash tools/refresh.sh --apply --domain <name>      # apply upstream changes to raw docs + manifest
+bash tools/refresh.sh --backfill --domain <name>   # (re)build the manifest from on-disk raw docs
+```
+
+Omit `--domain` to run against all 8 domains (~16 min at the 3s Jina rate limit). Prereqs: `curl`, `jq`, and `shasum` (or `sha256sum`). The script fails fast with install hints if anything's missing.
+
+For the semantic side (deciding which compressed skill files need updating based on the drift report), there's a companion skill at [refresh-skill/SKILL.md](refresh-skill/SKILL.md) that walks Claude through proposing edits.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
